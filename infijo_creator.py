@@ -19,7 +19,10 @@ class Infijo:
                     self.lista_tokens.append(self.numero_assembly)
                     self.numero_assembly = ""  # REINICIAMOS EL CONSTRUCTOR DESPUES DE AÑADIR A lista_tokens
                 if caracter != " ":  # SI TENEMOS 123 + 4 Y SE LEE EL ESPACIO, SE IGNORARA, SI NO ES UN ESPACIO PERO TAMPOCO UN NUMERO ES UN OPERADOR
-                    self.lista_tokens.append(caracter)
+                    if caracter == "*" and self.lista_tokens and self.lista_tokens[-1] == "*": # PERO SI EN LA LISTA EL NUMERO ANTERIOR YA GUARDADO DENTRO DE lista_tokens ES UN * Y EL NUEVO TAMBIEN SE SOBRE ESCRIBE COMO **
+                        self.lista_tokens[-1] = "**"
+                    else:
+                        self.lista_tokens.append(caracter)
             # print(self.numero_assembly) # DEBUG
         # AL TERMINAR EL PROCESO SI SE TERMINA CON UN NUMERO, ESTE QUEDA DENTRO DE numero_assembly POR LO QUE SE DEBE AÑADIR A LA LISTA
         # print(self.numero_assembly) # DEBUG

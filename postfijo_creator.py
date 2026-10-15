@@ -30,9 +30,6 @@ class Postfijo:
                     # print ("STACK: ", stack)
                 self.stack.pop()  # ELIMINAMOS EL PARENTESIS ( QUE TENIAMOS GUARDADO EN stack
 
-        # POR AQUI HAY UN ERROR RELACIONADO CON **
-
-
             elif caracter in self.operador:  # SI EL CARACTER ES UN OPERADOR SE EVALUARA DENTRO QUE PESO TIENE
                 if self.stack:  # CORROBORAMOS DE QUE TENGAMOS ALGO DENTRO DE STACK [+]=1 *=2 -> [+,*]
                     while self.stack and self.operador[self.stack[-1]] >= self.operador[caracter]:  # AÑADIMOS OTRO COMPROBADOR DE CANTIDAD Y SI SE CUMPLE SIGNIFICA QUE SE DEBE DE SACAR TODOS LOS SIGNOS QUE SEAN >= EL CARCTER ENTRANTE

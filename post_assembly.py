@@ -1,4 +1,3 @@
-# SOLUCION DE LA TRADUCCIÓN DEL STACK
 from text import Main
 from infijo_creator import Infijo
 from postfijo_creator import Postfijo

@@ -13,6 +13,7 @@ class Postfijo:
             '^': 3,
             '(': 0,
             ')': 0}
+
     def post_creador(self):
         for caracter in self.lista_tokenizada:
             # print(caracter)

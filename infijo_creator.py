@@ -5,6 +5,8 @@ class Infijo:
         self.lista_tokens = []
         self.numero_assembly = ""
 
+
+
     def tokenizar(self):
 
         for caracter in self.texto:  # VA A RECORRER UNO POR UNO  EL TEXTO

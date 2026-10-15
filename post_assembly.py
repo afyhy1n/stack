@@ -1,5 +1,5 @@
 # SOLUCION DE LA TRADUCCIÓN DEL STACK
-from main import Main
+from text import Main
 from infijo_creator import Infijo
 from postfijo_creator import Postfijo
 
@@ -31,6 +31,7 @@ class Assembler:
         return pila[0]
 
 
+if __name__ == "__main__":
 
-x=Assembler()
-print(x.calculadora())
+    x=Assembler()
+    print(x.calculadora())

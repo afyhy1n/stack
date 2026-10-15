@@ -8,6 +8,8 @@ class Postfijo:
             '+': 1,
             '-': 1,
             '*': 2,
+            'x': 2,
+            'X': 2,
             '/': 2,
             '**': 3,
             '^': 3,
@@ -27,6 +29,9 @@ class Postfijo:
                     # print ("EXIT: ", exitt)
                     # print ("STACK: ", stack)
                 self.stack.pop()  # ELIMINAMOS EL PARENTESIS ( QUE TENIAMOS GUARDADO EN stack
+
+        # POR AQUI HAY UN ERROR RELACIONADO CON **
+
 
             elif caracter in self.operador:  # SI EL CARACTER ES UN OPERADOR SE EVALUARA DENTRO QUE PESO TIENE
                 if self.stack:  # CORROBORAMOS DE QUE TENGAMOS ALGO DENTRO DE STACK [+]=1 *=2 -> [+,*]

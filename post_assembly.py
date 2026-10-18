@@ -55,7 +55,7 @@ class Assembler:
                     print(*expr)  # LISTA DINAMICA A MEDIDA QUE SE EJECUTAN LOS PASOS
                     break
 
-        return f"\nRESULTADO FINAL: \n{float(expr[0])}"
+        return f"\nRESULTADO FINAL: \n{bool(float(expr[0]))} / {float(expr[0])}"
 
 
 if __name__ == "__main__":

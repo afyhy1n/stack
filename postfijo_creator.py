@@ -4,16 +4,31 @@ class Postfijo:
         self.exitt = []
         self.stack = []
         self.operador = {
-            '+': 1,
-            '-': 1,
-            '*': 2,
-            'x': 2,
-            'X': 2,
-            '/': 2,
-            '**': 3,
-            '^': 3,
+            'OR': 1,
+
+            'AND': 2,
+
+            '=': 3,
+            '!=': 3,
+
+            '<': 4,
+            '>': 4,
+            '<=': 4,
+            '>=': 4,
+
+            '+': 5,
+            '-': 5,
+
+            '*': 6,
+            'X': 6,
+            '/': 6,
+
+            '**': 7,
+            '^': 7,
+
             '(': 0,
-            ')': 0}
+            ')': 0
+        }
 
     def post_creador(self):
         for caracter in self.lista_tokenizada:

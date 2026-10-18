@@ -15,7 +15,7 @@ class Assembler:
 
         while len(expr) > 1: # MIENTRAS QUE EN LA LISTA SE ENCUENTRE ALGUN DIGITO SEGUIRA IMPRIMIENDO
             for i, caracter in enumerate(expr):
-                if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**'):
+                if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**', '<', '>', '<=', '>=', '=', '!=', 'AND', 'OR'):
                     # SI ENCUENTRA UN OPERADOR SIGNIFICA QUE HAY 2 NUMERADORES ANTES, ENTONCES:
                     a = float(expr[i - 2]) # [10, 20, +, 30, +] -> 1O
                     b = float(expr[i - 1]) # [10, 20, +, 30, +] -> 20
@@ -29,13 +29,33 @@ class Assembler:
                         r = a / b
                     elif caracter == '^' or caracter == '**':
                         r = a ** b
+                    elif caracter == '<':
+                        r = a < b
+                    elif caracter == '>':
+                        r = a > b
+                    elif caracter == '<=':
+                        r = a <= b
+                    elif caracter == '>=':
+                        r = a >= b
+                    elif caracter == '=':
+                        r = a == b
+                    elif caracter == '!=':
+                        r = a != b
+                    # bool CONVIERTE EL RESULTADO str A UN VALOR TRUE O FALSE [10 5 OR] -> [TRUE]
+                    elif caracter == 'AND':
+                        # SOLO ES TRUE SI AMBOS SON TRUE
+                        r = bool(a) and bool(b)
+                    elif caracter == 'OR':
+                        # SOLO ES FALSE SI AMBOS SON FALSE
+                        r = bool(a) or bool(b)
+
 
                     # SE LIMITARAN [a, b, operador] Y SE CAMBIARAN POR EL RESULTADO ES IGUAL QUE [0:3]
                     expr[i - 2 : i + 1] = [r] # SE ELIMINARAN LOS ELEMENTOS a, b POR EL RESULTADO [10, 20, +] -> [30]
                     print(*expr)  # LISTA DINAMICA A MEDIDA QUE SE EJECUTAN LOS PASOS
                     break
 
-        return float(expr[0])
+        return f"\nRESULTADO FINAL: \n{float(expr[0])}"
 
 
 if __name__ == "__main__":

@@ -41,20 +41,13 @@ class Assembler:
                         r = a == b
                     elif caracter == '!=':
                         r = a != b
-                    # bool CONVIERTE EL RESULTADO str A UN VALOR TRUE O FALSE [10 5 OR] -> [TRUE]
                     elif caracter == 'AND':
-                        # SOLO ES TRUE SI AMBOS SON TRUE
                         r = bool(a) and bool(b)
                     elif caracter == 'OR':
-                        # SOLO ES FALSE SI AMBOS SON FALSE
                         r = bool(a) or bool(b)
-
-
-                    # SE LIMITARAN [a, b, operador] Y SE CAMBIARAN POR EL RESULTADO ES IGUAL QUE [0:3]
-                    expr[i - 2 : i + 1] = [r] # SE ELIMINARAN LOS ELEMENTOS a, b POR EL RESULTADO [10, 20, +] -> [30]
-                    print(*expr)  # LISTA DINAMICA A MEDIDA QUE SE EJECUTAN LOS PASOS
+                    expr[i - 2 : i + 1] = [r]
+                    print(*expr)
                     break
-
         return f"\nRESULTADO FINAL: \n{bool(float(expr[0]))} / {float(expr[0])}"
 
 

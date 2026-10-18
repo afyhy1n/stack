@@ -36,3 +36,6 @@ class Postfijo:
             while self.stack:
                 self.exitt.append(self.stack.pop())
         return self.exitt
+    
+    def __str__(self):
+        return str(self.exitt)

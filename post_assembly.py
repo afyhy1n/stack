@@ -10,24 +10,32 @@ class Assembler:
         self.postfijo.post_creador()
 
     def calculadora(self):
-        pila=[]
-        for caracter in self.postfijo.exitt:
-            if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**'):
-                b = pila.pop()
-                a = pila.pop()
-                if caracter == '+':
-                    pila.append(a+b)
-                elif caracter == '-':
-                    pila.append(a-b)
-                elif caracter == '*' or caracter == 'x' or caracter == 'X':
-                    pila.append(a*b)
-                elif caracter == '/':
-                    pila.append(a/b)
-                elif caracter == '^' or caracter == '**':
-                    pila.append(a**b)
-            else:
-                pila.append(float(caracter))
-        return pila[0]
+        expr = list(self.postfijo.exitt) # EXPRESIÓN COPIA DE LA LISTA self.postfijo.exitt
+        print(*expr) # PRINT DE LA LISTA INICIAL
+
+        while len(expr) > 1: # MIENTRAS QUE EN LA LISTA SE ENCUENTRE ALGUN DIGITO SEGUIRA IMPRIMIENDO
+            for i, caracter in enumerate(expr):
+                if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**'):
+                    # SI ENCUENTRA UN OPERADOR SIGNIFICA QUE HAY 2 NUMERADORES ANTES, ENTONCES:
+                    a = float(expr[i - 2]) # [10, 20, +, 30, +] -> 1O
+                    b = float(expr[i - 1]) # [10, 20, +, 30, +] -> 20
+                    if caracter == '+':
+                        r = a + b
+                    elif caracter == '-':
+                        r = a - b
+                    elif caracter in ('*', 'x', 'X'):
+                        r = a * b
+                    elif caracter == '/':
+                        r = a / b
+                    elif caracter == '^' or caracter == '**':
+                        r = a ** b
+
+                    # SE LIMITARAN [a, b, operador] Y SE CAMBIARAN POR EL RESULTADO ES IGUAL QUE [0:3]
+                    expr[i - 2 : i + 1] = [r] # SE ELIMINARAN LOS ELEMENTOS a, b POR EL RESULTADO [10, 20, +] -> [30]
+                    print(*expr)  # LISTA DINAMICA A MEDIDA QUE SE EJECUTAN LOS PASOS
+                    break
+
+        return float(expr[0])
 
 
 if __name__ == "__main__":

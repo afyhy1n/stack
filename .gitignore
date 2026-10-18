@@ -1,0 +1,11 @@
+# Python
+python-code/.venv/
+__pycache__/
+*.py[cod]
+
+# Rust
+rust-code/target/
+
+# IDE
+.idea/
+.vscode/

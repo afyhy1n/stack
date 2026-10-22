@@ -30,6 +30,3 @@ class Infijo:
         if self.numero_assembly:
             self.lista_tokens.append(self.numero_assembly)
         return self.lista_tokens
-
-x = Infijo("3 + 4.5 * (2 ** 2) <= 10 AND 5 != 6").tokenizar()
-print(x)

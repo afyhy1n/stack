@@ -44,6 +44,3 @@ class Infijo:
             for i in range(self.lista_tokens.count("(")-1):
                 self.lista_tokens.append(")")
         return self.lista_tokens
-
-x = Infijo("3(1+2)").tokenizar()
-print(x)

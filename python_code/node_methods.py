@@ -114,6 +114,16 @@ class ListNode:
         actual.next = None
         return True
 
+    # CONTADOR
+    def contar(self, dato):
+        conteo = 0
+        actual = self.selected
+        while actual != None:
+            if actual.data == dato:
+                conteo += 1
+            actual = actual.next
+        return conteo
+
     # PERMITE USAR "for token in lista"
     def __iter__(self):
         actual = self.selected

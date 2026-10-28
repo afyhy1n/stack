@@ -15,7 +15,12 @@ class Assembler:
 
         while len(expr) > 1: # MIENTRAS QUE EN LA LISTA SE ENCUENTRE ALGUN DIGITO SEGUIRA IMPRIMIENDO
             for i, caracter in enumerate(expr):
-                if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**', '<', '>', '<=', '>=', '=', '!=', 'AND', 'OR'):
+                if caracter == 'NOT':
+                    a = float(expr[i - 1])
+                    expr[i - 1: i + 1] = [not bool(a)]
+                    print(*expr)
+                    break
+                if caracter in ('+', '-', '*', 'x', 'X', '/', '^', '**', '<', '>', '<=', '>=', '=', '!=', '==', 'AND', 'OR'):
                     # SI ENCUENTRA UN OPERADOR SIGNIFICA QUE HAY 2 NUMERADORES ANTES, ENTONCES:
                     a = float(expr[i - 2]) # [10, 20, +, 30, +] -> 1O
                     b = float(expr[i - 1]) # [10, 20, +, 30, +] -> 20
@@ -41,6 +46,8 @@ class Assembler:
                         r = a == b
                     elif caracter == '!=':
                         r = a != b
+                    elif caracter == '==':
+                        r = a == b
                     elif caracter == 'AND':
                         r = bool(a) and bool(b)
                     elif caracter == 'OR':

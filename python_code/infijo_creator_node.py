@@ -31,7 +31,7 @@ class Infijo_node:
                         self.lista_tokens.reemplazar_ultimo("!=")
                     elif caracter == "=" and ultimo == "=":
                         self.lista_tokens.reemplazar_ultimo("==")
-                    elif caracter == "(" and ultimo == ")":
+                    elif caracter == "(" and ultimo == ")" or ultimo.isdigit():
                         self.lista_tokens.insertar_fin("*")
                         self.lista_tokens.insertar_fin("(")
                     elif caracter == "R" and ultimo == "O":
@@ -55,6 +55,3 @@ class Infijo_node:
             for i in range(self.lista_tokens.contar("(")-1):
                 self.lista_tokens.insertar_fin(")")
         return self.lista_tokens
-
-x=Infijo_node("(1+2)(2").tokenizar_node()
-print(x)

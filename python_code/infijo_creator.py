@@ -25,7 +25,7 @@ class Infijo:
                         self.lista_tokens[-1] = "!="
                     elif caracter == "=" and self.lista_tokens and self.lista_tokens[-1] == "=":
                         self.lista_tokens[-1] = "=="
-                    elif caracter == "(" and self.lista_tokens and self.lista_tokens[-1] == ")":
+                    elif caracter == "(" and self.lista_tokens and self.lista_tokens[-1] == ")" or self.lista_tokens[-1].isdigit():
                         self.lista_tokens.append("*")
                         self.lista_tokens.append("(")
                     elif caracter == "R" and self.lista_tokens and self.lista_tokens[-1] == "O":

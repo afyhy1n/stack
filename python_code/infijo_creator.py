@@ -4,6 +4,18 @@ class Infijo:
         self.lista_tokens = []
         self.numero_assembly = ""
 
+    def limpiar_vacios(self):
+        t = self.lista_tokens
+        i = 0
+        while i < len(t) - 1:
+            if t[i] == "(" and t[i + 1] == ")":
+                del t[i:i + 2]
+                if i > 0 and t[i - 1] == "*":  # el * implícito sobrante
+                    del t[i - 1]
+                    i -= 1
+                i = max(i - 1, 0)  # reevaluar, pueden anidarse
+            else:
+                i += 1
     def tokenizar(self):
         for caracter in self.texto:
             if caracter.isdigit() or caracter == ".":
@@ -43,4 +55,10 @@ class Infijo:
         if self.lista_tokens.count("(") != self.lista_tokens.count(")"):
             for i in range(self.lista_tokens.count("(")-1):
                 self.lista_tokens.append(")")
+        self.limpiar_vacios()
         return self.lista_tokens
+
+
+
+x = Infijo("3(1+3)(2(1(((((").tokenizar()
+print(x)

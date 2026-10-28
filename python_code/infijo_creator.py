@@ -25,7 +25,7 @@ class Infijo:
                         self.lista_tokens[-1] = "!="
                     elif caracter == "=" and self.lista_tokens and self.lista_tokens[-1] == "=":
                         self.lista_tokens[-1] = "=="
-                    elif caracter == "(" and self.lista_tokens and self.lista_tokens[-1] == ")" or self.lista_tokens[-1].isdigit():
+                    elif caracter == "(" and self.lista_tokens and (self.lista_tokens[-1].isdigit() or self.lista_tokens[-1] == ")"):
                         self.lista_tokens.append("*")
                         self.lista_tokens.append("(")
                     elif caracter == "R" and self.lista_tokens and self.lista_tokens[-1] == "O":
@@ -44,3 +44,6 @@ class Infijo:
             for i in range(self.lista_tokens.count("(")-1):
                 self.lista_tokens.append(")")
         return self.lista_tokens
+
+x = Infijo("3(1+2)").tokenizar()
+print(x)
